@@ -81,3 +81,15 @@ function analisarFaturamento() {
 
 // Executa a análise
 analisarFaturamento();
+
+// Output:
+// Menor valor de faturamento: R$ 373,78
+// Maior valor de faturamento: R$ 48.924,24
+// Número de dias com faturamento acima da média: 9
+
+// Caso queira testar:
+// - Altere os valores no arquivo `faturamento.json` (está na pasta `data`)
+// - E rodar o comando `npm run desafio3`
+
+// :D
+// Entra no meu site: https://v1cferr.dev

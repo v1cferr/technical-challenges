@@ -32,5 +32,9 @@ if (pertence) {
 // Output:
 // 21 pertence à sequência de Fibonacci.
 
+// Caso queira testar:
+// - Só alterar o valor da variável `numero`
+// - E rodar o comando `npm run desafio2`
+
 // :D
 // Entra no meu site: https://v1cferr.dev

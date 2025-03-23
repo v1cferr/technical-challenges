@@ -24,11 +24,13 @@ const indice = 13;
 
 const resultado = calcularSoma(indice);
 console.log(`O valor da variável SOMA é: ${resultado}`);
+
 // Output:
 // O valor da variável SOMA é: 91
 
 // Caso queira testar:
-// Só rodar o comando `npm run desafio1`
+// - Só alterar o valor da variável `indice`
+// - E rodar o comando `npm run desafio1`
 
 // :D
 // Entra no meu site: https://v1cferr.dev
