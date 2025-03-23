@@ -54,12 +54,22 @@ function analisarFaturamento() {
       (dia) => dia.valor > mediaMensal
     ).length;
 
-    // Exibe resultados
+    // Função para formatar valores monetários em reais
+    const formatarReal = (valor: number): string => {
+      return new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      }).format(valor);
+    };
+
+    // Exibe resultados com formatação adequada
     console.log(
-      `Menor valor de faturamento: R$ ${menorFaturamento.toFixed(4)}`
+      `Menor valor de faturamento: ${formatarReal(menorFaturamento)}`
     );
     console.log(
-      `Maior valor de faturamento: R$ ${maiorFaturamento.toFixed(4)}`
+      `Maior valor de faturamento: ${formatarReal(maiorFaturamento)}`
     );
     console.log(
       `Número de dias com faturamento acima da média: ${diasAcimaDaMedia}`
