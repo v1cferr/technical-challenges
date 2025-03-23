@@ -60,3 +60,65 @@ a) Essa string pode ser informada através de qualquer entrada de sua preferênc
 b) Evite usar funções prontas, como, por exemplo, reverse;
 
 > NÃO SE ESQUEÇA DE INSERIR O LINK DO SEU REPOSITÓRIO NO GITHUB COM O CÓDIGO FONTE QUE VOCÊ DESENVOLVEU!
+
+## Como executar as soluções
+
+### Pré-requisitos
+
+- Node.js (versão 14.x ou superior)
+- npm (normalmente instalado com o Node.js)
+
+### Instalação
+
+#### 1. Clone este repositório
+
+```bash
+git clone https://github.com/v1cferr/technical-challenges.git
+cd technical-challenges/target-sistemas
+```
+
+#### 2. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 3. Executando as soluções
+
+```bash
+# Desafio 1: Calculadora de soma
+npm run desafio1
+
+# Desafio 2: Verificador de Fibonacci
+npm run desafio2
+
+# Desafio 3: Análise de faturamento
+npm run desafio3
+
+# Desafio 4: Percentual de faturamento por estado
+npm run desafio4
+
+# Desafio 5: Inversão de string
+npm run desafio5
+
+# Execute todos os desafios sequencialmente
+npm run all
+```
+
+## Estrutura do projeto
+
+```bash
+target-sistemas/
+├── README.md
+├── package.json
+├── tsconfig.json
+├── src/
+│   ├── desafio1.ts
+│   ├── desafio2.ts
+│   ├── desafio3.ts
+│   ├── desafio4.ts
+│   ├── desafio5.ts
+│   └── data/
+│       └── faturamento.json
+└── .gitignore
+```

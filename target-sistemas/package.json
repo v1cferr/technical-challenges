@@ -1,7 +1,7 @@
 {
   "name": "target-sistemas",
   "version": "1.0.0",
-  "description": "Soluções para o desafio técnico da Target Sistemas",
+  "description": "Soluções para os desafios técnicos da Target Sistemas",
   "scripts": {
     "build": "tsc",
     "desafio1": "ts-node src/desafio1.ts",
