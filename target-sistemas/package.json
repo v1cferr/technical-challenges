@@ -1,0 +1,20 @@
+{
+  "name": "target-sistemas",
+  "version": "1.0.0",
+  "description": "Soluções para o desafio técnico da Target Sistemas",
+  "scripts": {
+    "build": "tsc",
+    "desafio1": "ts-node src/desafio1.ts",
+    "desafio2": "ts-node src/desafio2.ts",
+    "desafio3": "ts-node src/desafio3.ts",
+    "desafio4": "ts-node src/desafio4.ts",
+    "desafio5": "ts-node src/desafio5.ts",
+    "all": "npm run desafio1 && npm run desafio2 && npm run desafio3 && npm run desafio4 && npm run desafio5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4",
+    "@types/node": "^18.16.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        // Define o nível de suporte a recursos do ECMAScript (ES2016 = ES7)
+        "target": "es2016",
+        // Define o sistema de módulos a ser usado (CommonJS é compatível com Node.js)
+        "module": "commonjs",
+        // Permite importar módulos CommonJS com sintaxe de ES modules (import ao invés de require)
+        "esModuleInterop": true,
+        // Garante consistência na capitalização dos nomes de arquivos (importante em sistemas case-sensitive)
+        "forceConsistentCasingInFileNames": true,
+        // Habilita verificações de tipo estritas do TypeScript (null, undefined, any, etc)
+        "strict": true,
+        // Pula a verificação de tipos em arquivos de definição de bibliotecas (.d.ts)
+        "skipLibCheck": true,
+        // Diretório onde os arquivos JavaScript compilados serão gerados
+        "outDir": "./dist"
+    },
+    // Define quais arquivos devem ser incluídos na compilação
+    "include": [
+        "src/**/*" // Inclui todos os arquivos dentro da pasta src
+    ]
+}
