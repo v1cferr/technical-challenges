@@ -29,5 +29,6 @@ console.log(`O valor da variável SOMA é: ${resultado}`);
 
 // Caso queira testar:
 // Só rodar o comando `npm run desafio1`
+
 // :D
 // Entra no meu site: https://v1cferr.dev
