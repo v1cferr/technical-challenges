@@ -1,2 +1,5 @@
 # Ignorar diretório node_modules em todos os lugares
 **/node_modules/
+
+# Ignorar package-lock.json em todos os lugares
+**/package-lock.json

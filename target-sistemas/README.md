@@ -14,10 +14,21 @@ Se você é apaixonado por tecnologia, adora uma boa conversa, valoriza autonomi
 
 ### 1. Calculadora de soma
 
-Observe o trecho de código abaixo: int INDICE = 13, SOMA = 0, K = 0
+Observe o trecho de código abaixo:
 
-Enquanto K < INDICE faça { K = K + 1; SOMA = SOMA + K; }
+```plain
+int INDICE = 13;
+SOMA = 0;
+K = 0;
+
+Enquanto K < INDICE faça {
+    K = K + 1;
+    SOMA = SOMA + K;
+}
+
 Imprimir(SOMA);
+```
+
 Ao final do processamento, qual será o valor da variável SOMA?
 
 ### 2. Verificador de Fibonacci
