@@ -56,77 +56,75 @@ export function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-md space-y-8">
-      <div>
-        <h2 className="text-center text-3xl font-bold">Entre na sua conta</h2>
-      </div>
+    <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card-body">
+        <h2 className="card-title justify-center">Entre na sua conta</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-        {error && (
-          <div className="bg-red-50 text-red-500 p-3 rounded">{error}</div>
-        )}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {error && (
+            <div className="alert alert-error">
+              <span>{error}</span>
+            </div>
+          )}
 
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium">
-              Email
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Email</span>
             </label>
             <input
-              id="email"
               type="email"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
               placeholder="seu@email.com"
+              className="input input-bordered w-full"
               {...register("email")}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.email.message}
-              </p>
+              <label className="label">
+                <span className="label-text-alt text-error">
+                  {errors.email.message}
+                </span>
+              </label>
             )}
           </div>
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium">
-              Senha
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text">Senha</span>
             </label>
             <input
-              id="password"
               type="password"
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
+              className="input input-bordered w-full"
               {...register("password")}
             />
             {errors.password && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.password.message}
-              </p>
+              <label className="label">
+                <span className="label-text-alt text-error">
+                  {errors.password.message}
+                </span>
+              </label>
             )}
           </div>
-        </div>
 
-        <div className="space-y-4">
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50">
-            {isLoading ? "Entrando..." : "Entrar"}
-          </button>
+          <div className="card-actions flex-col">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="btn btn-primary w-full">
+              {isLoading ? "Entrando..." : "Entrar"}
+            </button>
 
-          <button
-            type="button"
-            onClick={handleGoogleLogin}
-            className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-            Entrar com Google
-          </button>
+            <button
+              type="button"
+              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
+              className="btn btn-outline w-full">
+              Entrar com Google
+            </button>
 
-          <div className="text-center">
-            <a
-              href="/register"
-              className="text-sm text-blue-600 hover:text-blue-500">
+            <a href="/register" className="btn btn-link">
               Não tem uma conta? Registre-se
             </a>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
