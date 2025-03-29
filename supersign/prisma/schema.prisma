@@ -15,43 +15,42 @@ datasource db {
 }
 
 model User {
-  id            String     @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String     @unique
+  email         String      @unique
   emailVerified DateTime?
   password      String?
   image         String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
   documents     Document[]
   signatures    Signature[]
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
 }
 
 model Document {
-  id          String      @id @default(cuid())
-  name        String
-  fileKey     String
-  status      DocStatus   @default(PENDING)
-  userId      String
-  user        User        @relation(fields: [userId], references: [id])
-  signatures  Signature[]
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id         String      @id @default(cuid())
+  name       String
+  fileKey    String
+  status     DocStatus   @default(PENDING)
+  userId     String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  user       User        @relation(fields: [userId], references: [id])
+  signatures Signature[]
 }
 
 model Signature {
-  id          String    @id @default(cuid())
-  documentId  String
-  userId      String
-  document    Document  @relation(fields: [documentId], references: [id])
-  user        User      @relation(fields: [userId], references: [id])
+  id           String   @id @default(cuid())
+  documentId   String
+  userId       String
   signatureImg String
-  createdAt   DateTime  @default(now())
-  signedAt    DateTime  @default(now())
+  createdAt    DateTime @default(now())
+  signedAt     DateTime @default(now())
+  document     Document @relation(fields: [documentId], references: [id])
+  user         User     @relation(fields: [userId], references: [id])
 }
 
 enum DocStatus {
   PENDING
   SIGNED
 }
-        
