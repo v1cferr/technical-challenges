@@ -4,7 +4,7 @@
 
 > Em ordem cronológica inversa (do mais recente ao mais antigo)
 
-- [ ] Configuração do Auth (NextAuth); para a página de login
+- [x] Configuração do Auth (NextAuth); para a página de login, registro e logout
 - [x] Configuração do Prisma; para facilitar as queries
 - [x] Configuração do `.env`; variáveis de ambiente do:
   - [x] Next.js
