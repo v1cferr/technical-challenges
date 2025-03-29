@@ -1,23 +1,27 @@
 import { defineConfig } from "eslint/config";
 import globals from "globals";
-import typescript from "@typescript-eslint/parser";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 
 export default defineConfig([
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser: typescript,
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       globals: {
         ...globals.browser,
         React: true,
       },
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-        ecmaVersion: "latest",
-        sourceType: "module",
-      },
+    },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
     },
     settings: {
       react: {
@@ -26,6 +30,7 @@ export default defineConfig([
     },
     rules: {
       "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   },
 ]);
