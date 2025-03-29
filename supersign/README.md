@@ -3,8 +3,10 @@
 ## Passos da Jornada
 
 > Em ordem cronológica inversa (do mais recente ao mais antigo)
+> Estou seguindo o: [REQUIREMENTS](./REQUIREMENTS.md)
 
-- [x] Configuração do Auth (NextAuth); para a página de login, registro e logout
+- [ ] 2. CRUD dos documentos
+- [x] 1. Configuração do Auth (NextAuth); para a página de login, registro e logout
 - [x] Configuração do Prisma; para facilitar as queries
 - [x] Configuração do `.env`; variáveis de ambiente do:
   - [x] Next.js
