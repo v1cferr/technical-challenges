@@ -1,12 +1,19 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions, DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import { compare } from "bcryptjs";
-import "@/lib/auth";
 
-const handler = NextAuth({
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+    } & DefaultSession["user"];
+  }
+}
+
+const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -21,7 +28,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials.password) {
-          throw new Error("Email e senha são obrigatórios");
+          throw new Error("Por favor, preencha todos os campos");
         }
 
         const user = await prisma.user.findUnique({
@@ -31,7 +38,7 @@ const handler = NextAuth({
         });
 
         if (!user || !user.password) {
-          throw new Error("Usuário não encontrado");
+          throw new Error("Email ou senha incorretos");
         }
 
         const isPasswordValid = await compare(
@@ -40,7 +47,7 @@ const handler = NextAuth({
         );
 
         if (!isPasswordValid) {
-          throw new Error("Senha incorreta");
+          throw new Error("Email ou senha incorretos");
         }
 
         return {
@@ -56,7 +63,7 @@ const handler = NextAuth({
     signIn: "/login",
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as const,
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -72,6 +79,8 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
