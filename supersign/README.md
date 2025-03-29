@@ -1,5 +1,19 @@
 # Supersign Challenge
 
+## Passos da Jornada
+
+> Em ordem cronológica inversa (do mais recente ao mais antigo)
+
+- [ ] Configuração do Auth (NextAuth); para a página de login
+- [x] Configuração do Prisma; para facilitar as queries
+- [x] Configuração do `.env`; variáveis de ambiente do:
+  - [x] Next.js
+  - [x] Google
+  - [x] Supabase
+- [x] Configuração do Supabase (BaaS); como escolha do banco de dados
+- [x] Configuração do Next.js (`create-next-app`); boilerplate clean inicial
+- [x] Organização da documentação em Markdown (Com base no PDF que foi fornecido)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
