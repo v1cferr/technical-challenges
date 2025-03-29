@@ -13,4 +13,45 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
+
+model User {
+  id            String     @id @default(cuid())
+  name          String?
+  email         String     @unique
+  emailVerified DateTime?
+  password      String?
+  image         String?
+  documents     Document[]
+  signatures    Signature[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Document {
+  id          String      @id @default(cuid())
+  name        String
+  fileKey     String
+  status      DocStatus   @default(PENDING)
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+  signatures  Signature[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Signature {
+  id          String    @id @default(cuid())
+  documentId  String
+  userId      String
+  document    Document  @relation(fields: [documentId], references: [id])
+  user        User      @relation(fields: [userId], references: [id])
+  signatureImg String
+  createdAt   DateTime  @default(now())
+  signedAt    DateTime  @default(now())
+}
+
+enum DocStatus {
+  PENDING
+  SIGNED
+}
         
