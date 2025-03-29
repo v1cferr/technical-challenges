@@ -6,8 +6,13 @@
 > Estou seguindo o: [REQUIREMENTS](./REQUIREMENTS.md)
 
 - [ ] 2. CRUD dos documentos
-- [x] 1. Configuração do Auth (NextAuth); para a página de login, registro e logout
-- [x] Configuração do Prisma; para facilitar as queries
+- [x] 1. Configuração do Auth; para a página de login, registro e logout
+  - [x] `zod` e `@hookform/resolvers` para validação de dados dos formulários
+  - [x] `bcryptjs` para criptografia de senhas
+  - [x] `next-auth` para autenticação
+  - [x] `next-auth/providers/google` para autenticação com Google
+- [x] Configuração do Tailwind e DaisyUI; para estilização
+- [x] Configuração do Prisma; para facilitar as queries e manipulação de dados
 - [x] Configuração do `.env`; variáveis de ambiente do:
   - [x] Next.js
   - [x] Google
