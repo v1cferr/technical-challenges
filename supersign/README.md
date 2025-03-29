@@ -11,6 +11,7 @@
   - [x] `bcryptjs` para criptografia de senhas
   - [x] `next-auth` para autenticação
   - [x] `next-auth/providers/google` para autenticação com Google
+  - [x] `next-auth/providers/credentials` para login/registro com email e senha
 - [x] Configuração do Tailwind e DaisyUI; para estilização
 - [x] Configuração do ESLint; para regras e padronização do código
 - [x] Configuração do Prisma; para facilitar as queries e manipulação de dados
