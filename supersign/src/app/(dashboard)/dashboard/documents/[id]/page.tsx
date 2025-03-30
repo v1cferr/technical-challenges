@@ -1,13 +1,17 @@
 import { DocumentViewer } from "@/components/documents/DocumentViewer";
 import Link from "next/link";
 
-interface DocumentPageProps {
+type DocumentPageProps = {
   params: {
     id: string;
   };
-}
+  searchParams: Record<string, string | string[] | undefined>;
+};
 
-export default async function DocumentPage({ params }: DocumentPageProps) {
+export default async function DocumentPage({
+  params,
+  searchParams,
+}: DocumentPageProps) {
   const documentId = params.id;
   return (
     <main className="min-h-screen p-8">
