@@ -5,7 +5,12 @@
 > Em ordem cronológica inversa (do mais recente ao mais antigo)
 > Estou seguindo o: [REQUIREMENTS](./REQUIREMENTS.md)
 
-- [ ] 2. CRUD dos documentos
+- [x] 2. CRUD dos documentos
+  - [x] Listagem de documentos do usuário
+  - [x] Upload de novos documentos
+  - [ ] Visualização de documentos (TODO)
+  - [x] Assinatura de documentos
+  - [x] Exclusão de documentos
 - [x] 1. Configuração do Auth; para a página de login, registro e logout
   - [x] `zod` e `@hookform/resolvers` para validação de dados dos formulários
   - [x] `bcryptjs` para criptografia de senhas

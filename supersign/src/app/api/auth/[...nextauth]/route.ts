@@ -13,7 +13,7 @@ declare module "next-auth" {
   }
 }
 
-const authOptions: AuthOptions = {
+export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
