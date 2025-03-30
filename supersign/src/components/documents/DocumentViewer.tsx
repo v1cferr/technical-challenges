@@ -5,6 +5,7 @@ import { Document as PrismaDocument, Signature } from "@prisma/client";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Link from "next/link";
+import Image from "next/image";
 import { pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import "react-pdf/dist/esm/Page/TextLayer.css";
@@ -136,10 +137,12 @@ export const DocumentViewer = ({ documentId }: DocumentViewerProps) => {
                 <strong>Assinatura:</strong>
               </p>
               <div className="mt-1 border border-gray-300 rounded p-2 bg-white">
-                <img
+                <Image
                   src={document.signatures[0].signatureImg}
                   alt="Assinatura"
                   className="max-h-20"
+                  width={200}
+                  height={80}
                 />
               </div>
             </div>

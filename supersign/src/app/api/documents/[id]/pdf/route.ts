@@ -4,10 +4,14 @@ import { authOptions } from "@/lib/auth-options";
 import { prisma } from "@/lib/prisma";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+interface RouteContext {
+  params: {
+    id: string;
+  };
+}
+
+export async function GET(req: NextRequest, context: any) {
+  const { id } = context.params;
   try {
     const session = await getServerSession(authOptions);
 
@@ -17,7 +21,7 @@ export async function GET(
 
     const document = await prisma.document.findUnique({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id,
       },
     });

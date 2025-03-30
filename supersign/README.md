@@ -1,26 +1,22 @@
 # Supersign Challenge
 
+- **Deploy:** <https://supersign-challenge.vercel.app/>
+- **Codebase:** <https://github.com/v1cferr/technical-challenges/tree/main/supersign>
+
 ## Passos da Jornada
 
 > Em ordem cronológica inversa (do mais recente ao mais antigo)
 > Estou seguindo o: [REQUIREMENTS](./REQUIREMENTS.md)
 
-**Principais dificuldades:**
-
-- Fazer o visualizador de PDF funcionar
-- Adicionar a assinatura dentro do PDF
-
-> No geral, manipular documentos PDF no geral, o restante foi relativamente tranquilo.
-
-- [x] 2. CRUD dos documentos
+- [x] 3. Assinatura Digital
+  - [x] Assinatura de documentos utilizando `react-signature-canvas`
+- [x] 2. (CRUD) Gerênciamento de documentos
   - [x] Listagem de documentos do usuário
-  - [x] (C) Upload de novos documentos
+  - [x] Upload de novos documentos
     - [x] `@aws-sdk/client-s3` para o upload no Supabase Storage
-  - [x] (R) Visualização de documentos
+  - [x] Visualização de documentos
     - [x] `react-pdf` para renderizar/visualizar documentos PDF
-  - [x] (U) Assinatura de documentos
-    - [x] `react-signature-canvas` para assinaturas
-  - [x] (D) Exclusão de documentos
+  - [x] Exclusão de documentos
 - [x] 1. Configuração do Auth; para a página de login, registro e logout
   - [x] `zod` e `@hookform/resolvers` para validação de dados dos formulários
   - [x] `bcryptjs` para criptografia de senhas
@@ -34,9 +30,28 @@
   - [x] Next.js
   - [x] Google
   - [x] Supabase
-- [x] Configuração do Supabase (BaaS); como escolha do banco de dados
+- [x] Configuração do PostgreSQL Supabase (BaaS); como escolha do banco de dados
 - [x] Configuração do Next.js (`create-next-app`); boilerplate clean inicial
 - [x] Organização da documentação em Markdown (Com base no PDF que foi fornecido)
+
+## Principais dificuldades
+
+Eu tava com um erro de build persistente que não conseguia resolver de jeito nenhum. Pesquisei e utilizei o Cline + Gemini 2.5 Pro para me auxiliar com o Pair Programming e consegui :D
+
+- Fazer o visualizador de PDF funcionar
+- Adicionar a assinatura dentro do PDF
+
+> Manipular documentos PDF no geral, o restante foi relativamente tranquilo.
+
+## Melhorias
+
+- [ ] Mobile-first
+- [ ] Melhorar UI/UX
+- [ ] Escolha da localização da assinatura no documento
+
+---
+
+Legado do `create-next-app`:
 
 ## Getting Started
 

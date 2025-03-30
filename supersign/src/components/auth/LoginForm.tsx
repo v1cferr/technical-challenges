@@ -16,7 +16,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export function LoginForm() {
   const router = useRouter();
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -48,11 +48,10 @@ export function LoginForm() {
       setError("Ocorreu um erro ao fazer login");
     } finally {
       setIsLoading(false);
+      if (error) {
+        console.error("Login error:", error);
+      }
     }
-  };
-
-  const handleGoogleLogin = () => {
-    signIn("google", { callbackUrl: "/dashboard" });
   };
 
   return (

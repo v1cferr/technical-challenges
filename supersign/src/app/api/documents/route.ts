@@ -20,7 +20,7 @@ const s3Client = new S3Client({
   },
 });
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 

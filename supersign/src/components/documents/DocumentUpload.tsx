@@ -9,10 +9,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const uploadSchema = z.object({
   name: z.string().min(3, "Nome deve ter pelo menos 3 caracteres"),
   file: z
-    .instanceof(FileList)
-    .refine((files) => files.length === 1, "Selecione um arquivo")
+    .any()
     .refine(
-      (files) => files[0]?.type === "application/pdf",
+      (files) => files instanceof FileList && files.length === 1,
+      "Selecione um arquivo"
+    )
+    .refine(
+      (files) =>
+        files instanceof FileList && files[0]?.type === "application/pdf",
       "Apenas arquivos PDF são permitidos"
     ),
 });
@@ -125,10 +129,10 @@ export const DocumentUpload = () => {
             }`}
             {...register("file")}
           />
-          {errors.file && (
+          {errors.file?.message && (
             <label className="label">
               <span className="label-text-alt text-error">
-                {errors.file.message}
+                {errors.file.message as string}
               </span>
             </label>
           )}

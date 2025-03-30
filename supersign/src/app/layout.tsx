@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Inter } from "next/font/google";

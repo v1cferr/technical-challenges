@@ -2,15 +2,15 @@ import Link from "next/link";
 import { DocumentSignature } from "@/components/documents/DocumentSignature";
 
 interface SignDocumentPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function SignDocumentPage({
   params,
 }: SignDocumentPageProps) {
-  const documentId = params.id;
+  const { id: documentId } = await params;
 
   return (
     <main className="min-h-screen p-8">
