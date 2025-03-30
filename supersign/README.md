@@ -1,6 +1,6 @@
 # Supersign Challenge
 
-- **Deploy:** <https://supersign-challenge.vercel.app/>
+- **Deploy:** <https://supersign-challenge.vercel.app/login>
 - **Codebase:** <https://github.com/v1cferr/technical-challenges/tree/main/supersign>
 
 ## Passos da Jornada
