@@ -2,5 +2,6 @@ onlyBuiltDependencies:
   - '@prisma/client'
   - '@prisma/engines'
   - canvas
+  - esbuild
   - prisma
   - sharp
