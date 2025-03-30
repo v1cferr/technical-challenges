@@ -5,6 +5,11 @@ import { Document as PrismaDocument, Signature } from "@prisma/client";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Link from "next/link";
+import { pdfjs } from "react-pdf";
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 interface DocumentWithSignatures extends PrismaDocument {
   signatures: Signature[];
@@ -74,50 +79,42 @@ export const DocumentViewer = ({ documentId }: DocumentViewerProps) => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">{document.name}</h2>
-        <div className="flex gap-2 items-center">
-          <span
-            className={`badge ${
-              document.status === "SIGNED" ? "badge-success" : "badge-warning"
-            }`}>
-            {document.status === "SIGNED" ? "Assinado" : "Pendente"}
-          </span>
-
-          {document.status !== "SIGNED" && (
-            <Link
-              href={`/dashboard/documents/${documentId}/sign`}
-              className="btn btn-primary btn-sm">
-              Assinar Documento
-            </Link>
-          )}
-        </div>
+        <h2 className="text-2xl font-semibold">{document.name}</h2>
+        {document.status === "PENDING" && (
+          <Link
+            href={`/dashboard/documents/${document.id}/sign`}
+            className="btn btn-primary">
+            Assinar Documento
+          </Link>
+        )}
       </div>
 
-      <div className="card bg-base-200 p-4">
-        <div className="text-sm">
-          <p>
-            <strong>ID:</strong> {document.id}
-          </p>
-          <p>
-            <strong>Criado em:</strong>{" "}
-            {formatDistanceToNow(new Date(document.createdAt), {
-              addSuffix: true,
-              locale: ptBR,
-            })}
-          </p>
-          <p>
-            <strong>Última atualização:</strong>{" "}
-            {formatDistanceToNow(new Date(document.updatedAt), {
-              addSuffix: true,
-              locale: ptBR,
-            })}
-          </p>
-        </div>
+      <div className="text-sm">
+        <p>
+          <strong>ID:</strong> {document.id}
+        </p>
+        <p>
+          <strong>Criado em:</strong>{" "}
+          {formatDistanceToNow(new Date(document.createdAt), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </p>
+        <p>
+          <strong>Última atualização:</strong>{" "}
+          {formatDistanceToNow(new Date(document.updatedAt), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </p>
       </div>
 
       <div className="w-full h-full">
-        {/* TODO: Implementar um visualizador de PDF https://react-pdf.org */}
-        <p>Procura um visualizador de PDF bom aí :D</p>
+        <iframe
+          src={`/api/documents/${documentId}/pdf`}
+          className="w-full h-full"
+          title="Visualizador de PDF"
+        />
       </div>
 
       {/* Exibir informações da assinatura se o documento estiver assinado */}

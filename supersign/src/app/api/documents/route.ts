@@ -2,7 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-options";
 import { prisma } from "@/lib/prisma";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+} from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+
+// Configurar o cliente S3 para o Supabase Storage
+const s3Client = new S3Client({
+  region: process.env.SUPABASE_REGION || "auto",
+  forcePathStyle: true,
+  endpoint: process.env.SUPABASE_STORAGE_URL,
+  credentials: {
+    accessKeyId: process.env.SUPABASE_S3_ACCESS_KEY_ID || "",
+    secretAccessKey: process.env.SUPABASE_S3_SECRET_ACCESS_KEY || "",
+  },
+});
 
 export async function GET(req: NextRequest) {
   try {
@@ -12,6 +28,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
     }
 
+    // Buscar documentos do banco de dados
     const documents = await prisma.document.findMany({
       where: {
         userId: session.user.id as string,
@@ -21,7 +38,24 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(documents);
+    // Adicionar URLs de acesso assinadas aos documentos
+    const documentsWithUrls = await Promise.all(
+      documents.map(async (document) => {
+        const command = new GetObjectCommand({
+          Bucket: "supersign",
+          Key: document.fileKey,
+        });
+        const signedUrl = await getSignedUrl(s3Client, command, {
+          expiresIn: 3600,
+        }); // URL válida por 1 hora
+        return {
+          ...document,
+          fileUrl: signedUrl,
+        };
+      })
+    );
+
+    return NextResponse.json(documentsWithUrls);
   } catch (error) {
     console.error("Erro ao buscar documentos:", error);
     return NextResponse.json(
@@ -49,17 +83,6 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-
-    // Configurar o cliente S3 para o Supabase Storage
-    const s3Client = new S3Client({
-      region: process.env.SUPABASE_REGION || "auto",
-      forcePathStyle: true,
-      endpoint: process.env.SUPABASE_STORAGE_URL,
-      credentials: {
-        accessKeyId: process.env.SUPABASE_S3_ACCESS_KEY_ID || "",
-        secretAccessKey: process.env.SUPABASE_S3_SECRET_ACCESS_KEY || "",
-      },
-    });
 
     // Preparar o arquivo para upload
     const fileKey = `documents/${Date.now()}_${file.name}`;

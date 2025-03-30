@@ -5,12 +5,19 @@
 > Em ordem cronológica inversa (do mais recente ao mais antigo)
 > Estou seguindo o: [REQUIREMENTS](./REQUIREMENTS.md)
 
+**Principais dificuldades:**
+
+- Fazer o visualizador de PDF funcionar
+- Adicionar a assinatura dentro do PDF
+
+> No geral, manipular documentos PDF no geral, o restante foi relativamente tranquilo.
+
 - [x] 2. CRUD dos documentos
   - [x] Listagem de documentos do usuário
   - [x] (C) Upload de novos documentos
     - [x] `@aws-sdk/client-s3` para o upload no Supabase Storage
-  - [ ] (R) Visualização de documentos
-    - [ ] [`@react-pdf/renderer`](https://react-pdf.org/) para renderizar PDFs
+  - [x] (R) Visualização de documentos
+    - [x] `react-pdf` para renderizar/visualizar documentos PDF
   - [x] (U) Assinatura de documentos
     - [x] `react-signature-canvas` para assinaturas
   - [x] (D) Exclusão de documentos
@@ -31,9 +38,9 @@
 - [x] Configuração do Next.js (`create-next-app`); boilerplate clean inicial
 - [x] Organização da documentação em Markdown (Com base no PDF que foi fornecido)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, run the development server:
 
