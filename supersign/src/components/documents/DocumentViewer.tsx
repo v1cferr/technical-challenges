@@ -113,7 +113,7 @@ export const DocumentViewer = ({ documentId }: DocumentViewerProps) => {
       <div className="w-full h-full">
         <iframe
           src={`/api/documents/${documentId}/pdf`}
-          className="w-full h-full"
+          className="w-full min-h-[800px]" // Changed from h-full to min-h-[800px]
           title="Visualizador de PDF"
         />
       </div>
