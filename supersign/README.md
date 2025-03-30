@@ -23,15 +23,15 @@
   - [x] `next-auth` para autenticação
   - [x] `next-auth/providers/google` para autenticação com Google
   - [x] `next-auth/providers/credentials` para login/registro com email e senha
-- [x] Configuração do Tailwind e DaisyUI; para estilização
-- [x] Configuração do ESLint; para regras e padronização do código
-- [x] Configuração do Prisma; para facilitar as queries e manipulação de dados
+- [x] Configuração do **Tailwind** e **DaisyUI**; para estilização
+- [x] Configuração do **ESLint**; para regras e padronização do código
+- [x] Configuração do **Prisma**; para facilitar as queries e manipulação de dados
 - [x] Configuração do `.env`; variáveis de ambiente do:
   - [x] Next.js
   - [x] Google
   - [x] Supabase
-- [x] Configuração do PostgreSQL Supabase (BaaS); como escolha do banco de dados
-- [x] Configuração do Next.js (`create-next-app`); boilerplate clean inicial
+- [x] Configuração do **PostgreSQL Supabase** (BaaS); como escolha do banco de dados
+- [x] Configuração do **Next.js** (`create-next-app`); boilerplate clean inicial
 - [x] Organização da documentação em Markdown (Com base no PDF que foi fornecido)
 
 ## Principais dificuldades
@@ -48,6 +48,20 @@ Eu tava com um erro de build persistente que não conseguia resolver de jeito ne
 - [ ] Mobile-first
 - [ ] Melhorar UI/UX
 - [ ] Escolha da localização da assinatura no documento
+
+## Execução
+
+Caso queira rodar o projeto localmente:
+
+- Configure o `.env` com as variáveis de ambiente do Next.js, Google e Supabase
+  - `NEXTAUTH_URL` (url base) e `NEXTAUTH_SECRET` (um random base64) são obrigatórias para o funcionamento do `next-auth`
+  - `GOOGLE_CLIENT_ID` e `GOOGLE_CLIENT_SECRET` são obrigatórias para o funcionamento do `next-auth` com Google
+  - `SUPABASE_PROJECT_URL` e `SUPABASE_API_KEY` são obrigatórias para o funcionamento do PostgreSQL Supabase
+  - `DATABASE_URL` e `DIRECT_URL` para conectar ao banco de dados do Supabase
+  - `SUPABASE_S3_ACCESS_KEY_ID`, `SUPABASE_S3_SECRET_ACCESS_KEY` e `SUPABASE_STORAGE_URL` são obrigatórias para o funcionamento do Supabase Storage
+- Instale o `pnpm` globalmente com `npm install -g pnpm`
+- Instalar as dependências com `pnpm install`
+- Rodar o projeto com `pnpm run dev`
 
 ---
 
