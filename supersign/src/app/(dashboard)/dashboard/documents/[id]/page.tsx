@@ -1,18 +1,16 @@
 import { DocumentViewer } from "@/components/documents/DocumentViewer";
 import Link from "next/link";
 
-type DocumentPageProps = {
-  params: {
-    id: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-};
+interface PageProps {
+  params: Promise<{ id: string }>;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
 export default async function DocumentPage({
   params,
   searchParams,
-}: DocumentPageProps) {
-  const documentId = params.id;
+}: PageProps) {
+  const { id: documentId } = await params;
   return (
     <main className="min-h-screen p-8">
       <div className="mb-8">
