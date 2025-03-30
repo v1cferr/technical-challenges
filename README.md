@@ -5,3 +5,4 @@ Este repositório contém minhas soluções para desafios técnicos de processos
 ## Desafios disponíveis
 
 - [Target Sistemas](./target-sistemas/README.md)
+- [SuperSign](./supersign/README.md)
