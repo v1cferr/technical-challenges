@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth-options";
 import { prisma } from "@/lib/prisma";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 export async function GET(req: NextRequest) {
   try {
@@ -49,8 +50,38 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // TODO: Implementar um upload do arquivo (Supabase Storage - S3 Protocol)
+    // Configurar o cliente S3 para o Supabase Storage
+    const s3Client = new S3Client({
+      region: process.env.SUPABASE_REGION || "auto",
+      forcePathStyle: true,
+      endpoint: process.env.SUPABASE_STORAGE_URL,
+      credentials: {
+        accessKeyId: process.env.SUPABASE_S3_ACCESS_KEY_ID || "",
+        secretAccessKey: process.env.SUPABASE_S3_SECRET_ACCESS_KEY || "",
+      },
+    });
+
+    // Preparar o arquivo para upload
     const fileKey = `documents/${Date.now()}_${file.name}`;
+    const buffer = Buffer.from(await file.arrayBuffer());
+
+    // Upload do arquivo para o Supabase Storage
+    try {
+      await s3Client.send(
+        new PutObjectCommand({
+          Bucket: "supersign",
+          Key: fileKey,
+          Body: buffer,
+          ContentType: file.type,
+        })
+      );
+    } catch (uploadError) {
+      console.error("Erro no upload do arquivo:", uploadError);
+      return NextResponse.json(
+        { error: "Erro ao fazer upload do arquivo" },
+        { status: 500 }
+      );
+    }
 
     // Criar o documento no banco de dados
     const document = await prisma.document.create({

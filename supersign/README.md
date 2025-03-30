@@ -7,10 +7,13 @@
 
 - [x] 2. CRUD dos documentos
   - [x] Listagem de documentos do usuário
-  - [x] Upload de novos documentos
-  - [ ] Visualização de documentos (TODO)
-  - [x] Assinatura de documentos
-  - [x] Exclusão de documentos
+  - [x] (C) Upload de novos documentos
+    - [x] `@aws-sdk/client-s3` para o upload no Supabase Storage
+  - [ ] (R) Visualização de documentos
+    - [ ] [`@react-pdf/renderer`](https://react-pdf.org/) para renderizar PDFs
+  - [x] (U) Assinatura de documentos
+    - [x] `react-signature-canvas` para assinaturas
+  - [x] (D) Exclusão de documentos
 - [x] 1. Configuração do Auth; para a página de login, registro e logout
   - [x] `zod` e `@hookform/resolvers` para validação de dados dos formulários
   - [x] `bcryptjs` para criptografia de senhas
