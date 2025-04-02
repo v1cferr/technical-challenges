@@ -48,6 +48,7 @@ Eu tava com um erro de build persistente que não conseguia resolver de jeito ne
 - [ ] Mobile-first
 - [ ] Melhorar UI/UX
 - [ ] Escolha da localização da assinatura no documento
+  - [ ] Converter o PDF para HTML/XML, adicionar a assinatura e transformar em PDF novamente
 
 ## Execução
 
