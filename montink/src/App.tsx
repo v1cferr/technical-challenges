@@ -1,5 +1,7 @@
+import ProductPage from "@/components/ProductPage";
+
 function App() {
-  return <p className="text-3xl">Adaptando o projeto</p>;
+  return <ProductPage />;
 }
 
 export default App;
